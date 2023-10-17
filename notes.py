@@ -15,7 +15,17 @@ def save_notes(notes): # функция сохранения/создания ф
         json.dump(notes, file, indent=4)
 
 
-# def print_notes(): создано в новой ветке
+def print_notes(): # функция показа/вывода всех заметок
+    notes = load_notes()
+    if len(notes) == 0:
+        print("У вас нет заметок.")
+    else:
+        for note in notes:
+            print(f"ID: {note['id']}")
+            print(f"Заголовок: {note['title']}")
+            print(f"Текст заметки: {note['message']}")
+            print(f"Дата/Время: {note['timestamp']}")
+            print()
 
 # def delete_note():
 
