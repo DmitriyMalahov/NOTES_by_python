@@ -15,7 +15,7 @@ def save_notes(notes): # функция сохранения/создания ф
         json.dump(notes, file, indent=4)
 
 
-def print_notes(): # функция показа всех заметок
+def print_notes(): # функция показа/вывода всех заметок
     notes = load_notes()
     if len(notes) == 0:
         print("У вас нет заметок.")
