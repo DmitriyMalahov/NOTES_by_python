@@ -22,7 +22,7 @@ def print_notes(): # функция показа/вывода всех заме�
     else:
         for note in notes:
             print(f"ID: {note['id']}")
-            print(f"Заголовок: {note['title']}")
+            print(f"Заголовок: {note['heading']}")
             print(f"Текст заметки: {note['message']}")
             print(f"Дата/Время: {note['timestamp']}")
             print()
