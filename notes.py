@@ -27,11 +27,19 @@ def print_notes(): # функция показа/вывода всех заме�
             print(f"Дата/Время: {note['timestamp']}")
             print()
 
-# def delete_note():
+def delete_note():
+    search_id = int(input("Введите ID заметки которую хотите удалить: "))
+    for note in notes:
+        if note['id'] == search_id:
+            notes.remove(note)
+            save_notes(notes)
+            print("Заметка удалена")
+            return
+    print("Заметка с таким ID отсуствует")
 
-def edit_note():
+def edit_note(): # функция редактирования заметок
     search_id = int(input("Введите ID заметки для редактирования: "))
-    for note in  notes:
+    for note in notes:
         if note['id'] == search_id:
             new_heading = input("Введите новый заголовок заметки: ")
             new_message = input("Введите новый текст заметки: ")
