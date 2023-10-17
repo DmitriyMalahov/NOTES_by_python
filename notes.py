@@ -15,11 +15,11 @@ def save_notes(notes): # функция сохранения/создания ф
         json.dump(notes, file, indent=4)
 
 
-# def print_notes(): создано в новой ветке
+# def print_notes(): создано в ветке def_print
 
 # def delete_note():
 
-# def edit_note():
+# def edit_note(): создана в ветке def_edit
 
 def add_note(): # Функйия добавления новой заметки в файл.
     heading = input("Введите заголовок заметки: ")
