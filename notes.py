@@ -27,7 +27,7 @@ def print_notes(): # функция показа/вывода всех заме�
             print(f"Дата/Время: {note['timestamp']}")
             print()
 
-def delete_note():
+def delete_note(): # Функция удаления заметки
     search_id = int(input("Введите ID заметки которую хотите удалить: "))
     for note in notes:
         if note['id'] == search_id:
@@ -45,7 +45,8 @@ def edit_note(): # функция редактирования заметок
             new_message = input("Введите новый текст заметки: ")
             note['heading'] = new_heading
             note['message'] = new_message
-            note['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            note['timestamp'] = datetime.datetime.now().strftime\
+                ("%Y-%m-%d %H:%M:%S")
             save_notes(notes)
             print("Заметка успешно отредактирована")
             return
@@ -65,15 +66,30 @@ def add_note(): # Функйия добавления новой заметки 
     save_notes(notes)
     print("Новая заметка создана")
 
-# def filter_notes():
+def filter_notes():
+    date = input("Введите дату в формате (ГГГГ-ММ-ДД): ")
+    try:
+        filter_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+    except ValueError:
+        print("Дата введена некорректно")
+        return
+    filter_notes = [note for note in notes if datetime.datetime.strptime
+    (note['timestamp'], "%Y-%m-%d %H:%M:%S").date() == filter_date]
 
+    if filter_notes:
+        print("Вот что удалось найти: ")
+        for note in filter_notes:
+            print(f"ID:{note['id']}, Заголовок:{note['heading']},\
+                  Текст:{note['message']}, Дата:{note['timestamp']}")
+    else:
+        print("Заметки на указанную дату отсуствуют")
 
 while True:
     print("Доступные команды для ввода:")
     print("add - добавить новую заметку")
     print("edit - изменить существующую заметку")
     print("delete - удалить существующую заметку")
-    print("filter - отфильтровать заметки по дате")
+    print("filter - показать заметки по указанной дате")
     print("print - показать все существующие заметки")
     print("exit - выйте изпрограммы")
     command = input("Введите команду: ")
