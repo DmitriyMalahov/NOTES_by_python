@@ -19,7 +19,19 @@ def save_notes(notes): # функция сохранения/создания ф
 
 # def delete_note():
 
-# def edit_note():
+def edit_note():
+    search_id = int(input("Введите ID заметки для редактирования: "))
+    for note in  notes:
+        if note['id'] == search_id:
+            new_heading = input("Введите новый заголовок заметки: ")
+            new_message = input("Введите новый текст заметки: ")
+            note['heading'] = new_heading
+            note['message'] = new_message
+            note['timestamp'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            save_notes(notes)
+            print("Заметка успешно отредактирована")
+            return
+        print("Заметка с таким ID отсуствует")
 
 def add_note(): # Функйия добавления новой заметки в файл.
     heading = input("Введите заголовок заметки: ")
