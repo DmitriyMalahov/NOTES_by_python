@@ -15,7 +15,7 @@ def save_notes(notes): # функция сохранения/создания ф
         json.dump(notes, file, indent=4)
 
 
-# def print_notes():
+# def print_notes(): создано в новой ветке
 
 # def delete_note():
 
