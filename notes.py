@@ -15,13 +15,23 @@ def save_notes(notes): # функция сохранения/создания ф
         json.dump(notes, file, indent=4)
 
 
-# def print_notes():
+def print_notes(): # функция показа всех заметок
+    notes = load_notes()
+    if len(notes) == 0:
+        print("У вас нет заметок.")
+    else:
+        for note in notes:
+            print(f"ID: {note['id']}")
+            print(f"Заголовок: {note['title']}")
+            print(f"Текст заметки: {note['message']}")
+            print(f"Дата/Время: {note['timestamp']}")
+            print()
 
 # def delete_note():
 
 # def edit_note():
 
-def add_note(): # Функйия добавления новой заметки в файл.
+def add_note(): # Функция добавления/создания новой заметки в файл.
     heading = input("Введите заголовок заметки: ")
     message = input("Ввделите текс заметки: ")
     time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -45,7 +55,7 @@ while True:
     print("delete - удалить существующую заметку")
     print("filter - отфильтровать заметки по дате")
     print("print - показать все существующие заметки")
-    print("exit - выйте изпрограммы")
+    print("exit - выход из программы")
     command = input("Введите команду: ")
    
     if command == "add":
